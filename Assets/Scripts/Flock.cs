@@ -33,8 +33,10 @@ public class Flock : MonoBehaviour
     [Tooltip("The distance to be considered as a neighbor/obstacle etc. Ranging from 1 to 10.")]
     [Range(1f, 10f)]
     public float neighborRadius = 1.5f;
-    [Tooltip("The distance to avoid colliding with neighbor agents around you, a ratio of neighborRadius. A value between no radius and neighbor radius.")]
-    public float avoidanceRadiumMultiplier = 0.5f;
+    [Tooltip("The distance to avoid colliding with neighbor agents around you, a ratio of neighborRadius. A value between no radius and neighbor radius. CAN NOT BE CHANGED DURING PLAY MODE")]
+    public float avoidanceRadiusMultiplier = 0.5f;
+    [Tooltip("CAN NOT BE CHANGED DURING PLAY MODE")]
+    public float evadeRadiusMultiplier = 1.0f;//*****
     #endregion
 
     #region Utility / Squared Values Variables and Property
@@ -50,16 +52,20 @@ public class Flock : MonoBehaviour
     /// </summary>
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
     #endregion
+    private float squareEvadeRadius;//*****
+    public float SquareEvadeRadius { get { return squareEvadeRadius; } } //*****
 
     private void Start()
     {
     #region Initialize Utility Variable Values
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
-        squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiumMultiplier * avoidanceRadiumMultiplier;
+        squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
+        squareEvadeRadius = squareNeighborRadius * evadeRadiusMultiplier * evadeRadiusMultiplier; //*****
+
         #endregion
 
-    #region Initialize and Instantiate the Flock
+        #region Initialize and Instantiate the Flock
         for (int i = 0; i < startingCount; i++)
         {
             FlockAgent newAgent = Instantiate( //spawn clones of gameObject or Prefabs

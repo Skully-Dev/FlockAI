@@ -27,8 +27,11 @@ public class FlockAgent : MonoBehaviour
     /// public accessor to agentCollider. So can Get agentCollider but NOT Set.
     /// as agentCollider only needs to be assigned to at start.
     /// </summary>
-    public Collider2D AgentCollider { get { return agentCollider; } } 
+    public Collider2D AgentCollider { get { return agentCollider; } }
     // Start is called before the first frame update
+
+    public bool isEvade;
+
     void Start()
     {
         agentCollider = GetComponent<Collider2D>();

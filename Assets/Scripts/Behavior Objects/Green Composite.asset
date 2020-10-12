@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe17a5e02663d0468ddf3b5440315c4, type: 3}
-  m_Name: Blue Composite
+  m_Name: Green Composite
   m_EditorClassIdentifier: 
   capMagnitudesToWeightValues: 1
   behaviors:
@@ -26,5 +26,5 @@ MonoBehaviour:
     weight: 0
   - behavior: {fileID: 11400000, guid: 15468c2735c5f1f4ca425103c392d1e3, type: 2}
     weight: 10
-  - behavior: {fileID: 11400000, guid: ae09c066893ebb140bdc56030946de25, type: 2}
+  - behavior: {fileID: 11400000, guid: 4122744d9d5b2a444b2d1bc9539293de, type: 2}
     weight: 10
