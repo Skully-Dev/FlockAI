@@ -2,26 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Flock/Filter/Physics Layer")]
-
-public class PhysicsLayerFilter : ContextFilter
+//because it is a ScriptableObject and not MonoBehavior, we need a way to create it.
+[CreateAssetMenu(menuName = "Flock/Filter/Physics Layer")] //now rmb project folder will allow creation of a scriptable object in Flock > Filter
+public class PhysicsLayerFilter : ContextFilter //Derived from ContextFilter, therefore requires the filter original context method.
 {
+    //A convenient way to access physics layers from inspector
     public LayerMask mask; //001001000
 
     public override List<Transform> Filter(FlockAgent agent, List<Transform> original)
     {
-        List<Transform> filtered = new List<Transform>();
-        foreach (Transform item in original)
+        List<Transform> filtered = new List<Transform>(); //to be populated with physics layer transforms, objects to avoid.
+        foreach (Transform item in original)//for each Transform(gameObjects with colliders) near flock agent
         {
-            //if the layer of the item exists in the mask, the mask wont change with an OR
+            //if the layer of the item exists in the mask, the mask wont change with an OR |
             if (mask == (mask | (1 << item.gameObject.layer))) //bitwise operation,  if layer of original exists in this mask
             {
-                filtered.Add(item);
+                filtered.Add(item); //therefore on mask layer and is added to filtered context list.
             }
         }
         return filtered;
     }
 }
+//Filtered list of objects on a specific layer mask.
+//can be used to chase or avoid etc.
 
 //bitwise operations
 

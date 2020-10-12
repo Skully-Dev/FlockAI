@@ -4,7 +4,7 @@ using UnityEngine;
 
 //because it is a ScriptableObject and not MonoBehavior, we need a way to create it.
 [CreateAssetMenu(menuName = "Flock/Behavior/Cohesion")] //now rmb project folder will allow creation of a scriptable object in Flock > Behavior
-public class CohesionBehavior : FilteredFlockBehavior //Get the methods and vars from FlockBehaviour, so it has to implement that flockBehaviour CalculateMove
+public class CohesionBehavior : FilteredFlockBehavior //Get the methods and vars from FilteredFlockBehaviour, which is derived from FlockBehavior so it has to implement that FlockBehaviour CalculateMove and had FilteredFlockBehavior ContextFilter reference slot.
 {
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock) //agent is its own agent, context is other agents
     {
@@ -19,7 +19,7 @@ public class CohesionBehavior : FilteredFlockBehavior //Get the methods and vars
         //add all points together and get the average
         Vector2 cohesionMove = Vector2.zero; //starting value of zero to be added upon. Never assume a default value.
         //if(filter == null){ filteredContext = context } else { filteredContext = filter.Filter(agent, context)}
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context); //Ternary operators
+        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context); //Ternary operators, if no ContextFilter reference was provided will use unfiltered context.
         foreach (Transform item in filteredContext)
         {
             cohesionMove += (Vector2)item.position; //add the positions of all transforms of all agent neighbors of the same flock

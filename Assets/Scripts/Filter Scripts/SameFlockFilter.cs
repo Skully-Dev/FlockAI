@@ -4,7 +4,7 @@ using UnityEngine;
 
 //because it is a ScriptableObject and not MonoBehavior, we need a way to create it.
 [CreateAssetMenu(menuName = "Flock/Filter/Same Flock")]//now rmb project folder will allow creation of a scriptable object in Flock > Filter
-public class SameFlockFilter : ContextFilter
+public class SameFlockFilter : ContextFilter //Derived from ContextFilter, therefore requires the filter original context method.
 {
     public override List<Transform> Filter(FlockAgent agent, List<Transform> original)
     {
