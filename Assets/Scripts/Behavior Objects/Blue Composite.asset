@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe17a5e02663d0468ddf3b5440315c4, type: 3}
   m_Name: Blue Composite
   m_EditorClassIdentifier: 
+  capMagnitudesToWeightValues: 0
   behaviors:
-  - behaviors: {fileID: 11400000, guid: 6c28b6982ac8e774eaaeb3965c8e29fe, type: 2}
-    weights: 1
-  - behaviors: {fileID: 11400000, guid: 8d2ca0f35d726344da888354b98ebc3b, type: 2}
-    weights: 2
-  - behaviors: {fileID: 11400000, guid: a4c6d92bbdb47544eb311486311f034a, type: 2}
-    weights: 4
-  - behaviors: {fileID: 11400000, guid: 41b8de2908f857344a7efafcac71b9c7, type: 2}
-    weights: 0.1
-  - behaviors: {fileID: 11400000, guid: 0d0bcce983bbedf4dab8d2d3e87d6741, type: 2}
-    weights: 2
-  - behaviors: {fileID: 11400000, guid: 15468c2735c5f1f4ca425103c392d1e3, type: 2}
-    weights: 10
+  - behavior: {fileID: 11400000, guid: 6c28b6982ac8e774eaaeb3965c8e29fe, type: 2}
+    weight: 1
+  - behavior: {fileID: 11400000, guid: 8d2ca0f35d726344da888354b98ebc3b, type: 2}
+    weight: 2
+  - behavior: {fileID: 11400000, guid: a4c6d92bbdb47544eb311486311f034a, type: 2}
+    weight: 4
+  - behavior: {fileID: 11400000, guid: 41b8de2908f857344a7efafcac71b9c7, type: 2}
+    weight: 0.1
+  - behavior: {fileID: 11400000, guid: 0d0bcce983bbedf4dab8d2d3e87d6741, type: 2}
+    weight: 2
+  - behavior: {fileID: 11400000, guid: 15468c2735c5f1f4ca425103c392d1e3, type: 2}
+    weight: 10
