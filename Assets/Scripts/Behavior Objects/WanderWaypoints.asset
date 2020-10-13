@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9f2f28ad32aad459b639ca9249808f, type: 3}
+  m_Name: WanderWaypoints
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 7546562021051429161, guid: 9bee305803e65604297fc05a2ffd5b45, type: 3}
+  - {fileID: 2783629260574254391, guid: ec204e58860c31747a90c78c0b6aba06, type: 3}
+  - {fileID: 1248707942996641812, guid: c424631b46fb9ed4ba0c77bae984431b, type: 3}
+  - {fileID: 2407892970493840827, guid: db93b7f042ed18a49ae07c637f878fa7, type: 3}
+  - {fileID: 4074866216910674811, guid: ee3e620c1b704454c888e98acf4636f5, type: 3}
+  sqrMinDistance: 0.5
+  index: 0
+  agentSmoothTime: 0.05

@@ -11,7 +11,7 @@ public class EvadeBehavior : FilteredFlockBehavior //Get the methods and vars fr
         //if no neighbors, return no adjustment.
         if (context.Count == 0)
         {
-            agent.isEvade = false;
+            agent.isEvade = false; //if not evading, set agents isEvade to false
             return Vector2.zero;
         }
 
@@ -31,12 +31,12 @@ public class EvadeBehavior : FilteredFlockBehavior //Get the methods and vars fr
         }
         if (numEvade > 0) //if any dangerous agents are within evade radius
         {
-            agent.isEvade = true;
+            agent.isEvade = true; //if evading, set agents isEvade to true
             evadeMove /= numEvade; //get the average magnitude of the sum of the evade directions
         }
         else
         {
-            agent.isEvade = false;
+            agent.isEvade = false; //if not evading, set agents isEvade to false 
         }
 
         return evadeMove;
@@ -45,3 +45,4 @@ public class EvadeBehavior : FilteredFlockBehavior //Get the methods and vars fr
 //Evade: aims to move away from filtered objects within evadeRadius (similar to avoidance but larger, its radius is based on neighbor radius)
 //Finds the opposite direction from all Agents that are dangerous and within EvadeRadius(the sum of all opposite directions from dangerous colliders within evade radius / count = average opposite direction)
 //Unless no neighbors, then return no adjustment.
+//Also toggles is evade for optional hide behavior.

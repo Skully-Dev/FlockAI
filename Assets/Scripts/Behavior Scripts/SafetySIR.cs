@@ -4,18 +4,18 @@ using UnityEngine;
 
 //because it is a ScriptableObject and not MonoBehavior, we need a way to create it.
 [CreateAssetMenu(menuName = "Flock/Behavior/SafetySIR")] //now rmb project folder will allow creation of a scriptable object in Flock > Behavior
-public class SafetyStayIn : FlockBehavior
+public class SafetySIR : FlockBehavior
 {
     [SerializeField]
-    [Tooltip("The mid-point position of the circle to stay within. Default to 0,0")]
+    [Tooltip("The mid-point position of the circle to stay within.")]
     private Vector2 center;
     [SerializeField]
     [Tooltip("How large the circle to stay within is")]
-    private float radius = 15;
+    private float radius = 5;
 
     public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        if (agent.isEvade)
+        if (agent.isEvade)//if agent is trying to evade
         {
             Vector2 centerOffset = center - (Vector2)agent.transform.position; //the direction to center, mag would be the distance to center.
             float t = centerOffset.magnitude / radius; //if t=0, at center. if t=1, at circumference. if t>1, outside circle
@@ -33,3 +33,5 @@ public class SafetyStayIn : FlockBehavior
         return Vector2.zero; //don't bother changing anything
     }
 }
+//When Agent is prey and currently is evading a predator, move towards safety obstacle
+//its surrounded by forces predators can't penetrate, stay within safety circle until predator gone.

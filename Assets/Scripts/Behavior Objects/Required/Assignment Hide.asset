@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fe17a5e02663d0468ddf3b5440315c4, type: 3}
-  m_Name: Assignment Evading
+  m_Name: Assignment Hide
   m_EditorClassIdentifier: 
-  capMagnitudesToWeightValues: 1
+  capMagnitudesToWeightValues: 0
   behaviors:
-  - behavior: {fileID: 11400000, guid: 2886a3a3749fdf5469295f6fc1afc3ef, type: 2}
+  - behavior: {fileID: 11400000, guid: 670eb462fd27d8d4aa3177414884d1ac, type: 2}
     weight: 1
-  - behavior: {fileID: 11400000, guid: 4122744d9d5b2a444b2d1bc9539293de, type: 2}
-    weight: 10
+  - behavior: {fileID: 11400000, guid: ae20e6b82eb6b4a41ad71efed9ee476a, type: 2}
+    weight: 0.5

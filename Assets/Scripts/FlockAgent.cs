@@ -29,7 +29,7 @@ public class FlockAgent : MonoBehaviour
     /// </summary>
     public Collider2D AgentCollider { get { return agentCollider; } }
     // Start is called before the first frame update
-
+    [Tooltip("For optional hide behavior, while evade, move towards safety")]
     public bool isEvade;
 
     void Start()

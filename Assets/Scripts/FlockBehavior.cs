@@ -12,22 +12,26 @@ public abstract class FlockBehavior : ScriptableObject //inheriting from somethi
     /// <summary>
     /// The behavior will take over at this point, scriptable object will run whatever calculations it needs to and return back a vector2 = the way the agent should move.
     /// Since its abstract, we don't put the body to it in FlockBehaviour but the derived classes.
-    /// CHECK DERIVED BEHAVIOR FOR BODY AND DESCRIPTION
     /// 
     /// COHESION: aims to bring nearby agents together
-    /// Finds the mid point between all Agents neighbors (the sum of all neighbors positions / neighbor count = Average Global Position) and offsets that position relative to Agent position, returning a desired direction. Unless no neighbors, then return no adjustment.
     /// 
     /// ALIGNMENT: aims to align all agents facing direction
-    /// Finds the average facing direction between all Agents neighbors (the sum of all neighbors transform.up / neighbor count = a normalised average facing direction), Unless no neighbors, then return current transform.up/facing direction.
     /// 
     /// AVOIDANCE: aims to keep agent at a distance from neighboring agents all up in its personal space.
-    /// Finds the opposite direction from all Agents neighbors that are too close (the sum of all opposite directions from agents within avoidance radius / neighbor count = average opposite direction), Unless no neighbors, then return no adjustment.
     /// 
     /// STAYINRADIUS: aims to keep agents within a defined circle.
-    /// How far away from the center is the agent, if too far, start moving towards center again at swoopish quadratic rate
     /// 
     /// COMPOSITE: Basically combines multiple behaviors
-    /// Returns the sum of the referenced behaviors CalculateMove results, each scaled by their weight and optionally capped values to their weight.
+    /// 
+    /// CHASE: Aims to move towards agents of different flocks.
+    /// 
+    /// EVADE: Aims to flee CHASE predators, Toggles agent isEvade.
+    /// 
+    /// SAFETYSIR: When Chased, Prey move towards safety radius predators can't penetrate.
+    /// 
+    /// WANDER: Aims to move towards a specific random location, followed by another and so on.
+    /// 
+    /// CHECK DERIVED BEHAVIOR FOR BODY AND FULL DESCRIPTION
     /// </summary>
     /// <param name="agent">The Agent we are working with to calculate its move.</param>
     /// <param name="context">What neighbours are around me(Agent), i.e. Other agents, obstacles or boundries etc.</param>
