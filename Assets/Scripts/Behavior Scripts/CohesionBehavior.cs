@@ -20,11 +20,19 @@ public class CohesionBehavior : FilteredFlockBehavior //Get the methods and vars
         Vector2 cohesionMove = Vector2.zero; //starting value of zero to be added upon. Never assume a default value.
         //if(filter == null){ filteredContext = context } else { filteredContext = filter.Filter(agent, context)}
         List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context); //Ternary operators, if no ContextFilter reference was provided will use unfiltered context.
+        int count = 0; //class
         foreach (Transform item in filteredContext)
         {
-            cohesionMove += (Vector2)item.position; //add the positions of all transforms of all agent neighbors of the same flock
+            if (Vector2.SqrMagnitude(item.position - agent.transform.position) <= flock.SquareSmallRadius) //class
+            {
+                cohesionMove += (Vector2)item.position; //add the positions of all transforms of all agent neighbors of the same flock
+                count++; //class
+            }
         }
-        cohesionMove /= context.Count; //the average mid-point, a global position.
+        if (count != 0)
+        {
+            cohesionMove /= count; //the average mid-point, a global position.
+        }
 
         //create offset from agent position //direction from a to b = b - a
         cohesionMove -= (Vector2)agent.transform.position; //The mid-point relative to the agents position.

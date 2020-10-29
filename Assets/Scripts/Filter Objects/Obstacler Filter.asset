@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66a2ebc85ef0f50418a8cb2c5dbb6554, type: 3}
-  m_Name: Obstacle Layer Filter
+  m_Name: Obstacler Filter
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2

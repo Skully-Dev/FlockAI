@@ -37,6 +37,7 @@ public class Flock : MonoBehaviour
     public float avoidanceRadiusMultiplier = 0.5f;
     [Tooltip("CAN NOT BE CHANGED DURING PLAY MODE")]
     public float evadeRadiusMultiplier = 1.0f;//*****
+    public float smallRadiusMultiplier = 0.2f;// class
     #endregion
 
     #region Utility / Squared Values Variables and Property
@@ -54,15 +55,18 @@ public class Flock : MonoBehaviour
     #endregion
     private float squareEvadeRadius;//*****
     public float SquareEvadeRadius { get { return squareEvadeRadius; } } //*****
+    
+    private float squareSmallRadius;//class
+    public float SquareSmallRadius { get { return squareSmallRadius; } } //class
 
     private void Start()
     {
-    #region Initialize Utility Variable Values
+        #region Initialize Utility Variable Values
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
         squareEvadeRadius = squareNeighborRadius * evadeRadiusMultiplier * evadeRadiusMultiplier; //*****
-
+        squareSmallRadius = squareNeighborRadius * smallRadiusMultiplier * smallRadiusMultiplier;//class
         #endregion
 
         #region Initialize and Instantiate the Flock

@@ -18,12 +18,19 @@ public class AlignmentBehavior : FilteredFlockBehavior //Get the methods and var
         Vector2 alignmentMove = Vector2.zero; //starting value of zero to be added upon. Never assume a default value.
         //if(filter == null){ filteredContext = context } else { filteredContext = filter.Filter(agent, context)}
         List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context); //Ternary operators, if no ContextFilter reference was provided will use unfiltered context.
+        int count = 0; // class
         foreach (Transform item in filteredContext)
         {
-            alignmentMove += (Vector2)item.transform.up; //add the facing direction of all agent neighbors of the same flock
+            if(Vector2.SqrMagnitude(item.position - agent.transform.position) <= flock.SquareSmallRadius) //class
+            {
+                alignmentMove += (Vector2)item.transform.up; //add the facing direction of all agent neighbors of the same flock
+                count++; //class
+            }
         }
-        alignmentMove /= context.Count; //the average facing direction with magnitude average. Needs to be averaged or will reach crazy speeds when lots of neighbors present (this is how the vector2 will be applied to agent)
-
+        if (count > 0)
+        {
+            alignmentMove /= count; //the average facing direction with magnitude average. Needs to be averaged or will reach crazy speeds when lots of neighbors present (this is how the vector2 will be applied to agent)
+        }
         return alignmentMove;
     }
 }

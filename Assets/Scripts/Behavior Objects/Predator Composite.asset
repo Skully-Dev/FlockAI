@@ -15,8 +15,8 @@ MonoBehaviour:
   capMagnitudesToWeightValues: 1
   behaviors:
   - behavior: {fileID: 11400000, guid: 41b8de2908f857344a7efafcac71b9c7, type: 2}
-    weight: 0.1
-  - behavior: {fileID: 11400000, guid: ce34f2f1c2e5d104e95eaf34b05078fb, type: 2}
+    weight: 1
+  - behavior: {fileID: 11400000, guid: 8ce689967af03c949a40d4165f472423, type: 2}
     weight: 2
   - behavior: {fileID: 11400000, guid: a4c6d92bbdb47544eb311486311f034a, type: 2}
     weight: 5
