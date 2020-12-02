@@ -16,7 +16,10 @@ public class DifferentFlockFilter : ContextFilter //Derived from ContextFilter, 
             {
                 if (itemAgent.AgentFlock != agent.AgentFlock) //if NOT part of the same flock
                 {
-                    filtered.Add(item); //add it to filtered list
+                    if (itemAgent.state != Life.State.Hidden && itemAgent.state != Life.State.Attacked)
+                    {
+                        filtered.Add(item); //add it to filtered list
+                    }
                 }
             }
         }

@@ -9,7 +9,7 @@ public class HideBehavior : FilteredFlockBehavior
 
     public float hideBehindObstacleDistance = 2f;
 
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock)
     {
         if (context.Count == 0)
         {

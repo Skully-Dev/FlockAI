@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behavior/Alignment")] //now rmb project folder will allow creation of a scriptable object in Flock > Behavior
 public class AlignmentBehavior : FilteredFlockBehavior //Get the methods and vars from FilteredFlockBehaviour, which is derived from FlockBehavior so it has to implement that FlockBehaviour CalculateMove and had FilteredFlockBehavior ContextFilter reference slot.
 {
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock) //agent is its own agent, context is other agents
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock) //agent is its own agent, context is other agents
     {
         //if no neighbors, maintain current direction.
         if (context.Count == 0)

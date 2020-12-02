@@ -12,7 +12,7 @@ public class SteeredCohesion : FilteredFlockBehavior //Get the methods and vars 
     Vector2 currentVelocity;
     [Tooltip("How long for Agent to get from current state to calculated state. Default 0.5 seconds. NOTE: value changes every frame, so this basically scales whatever the value is.")]
     public float agentSmoothTime = 0.5f;
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock)
     {
         //if no neibours return no adjustment
         if (context.Count == 0)

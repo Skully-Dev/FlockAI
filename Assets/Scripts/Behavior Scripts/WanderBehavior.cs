@@ -11,7 +11,7 @@ public class WanderBehavior : FilteredFlockBehavior
 
     Vector2 waypointDirection = Vector2.zero;
 
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock)
     {
         if(path == null)
         {

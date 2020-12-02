@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1338426c781254a8cdb8a6f6c6945f, type: 3}
   m_Name: WanderRandom
   m_EditorClassIdentifier: 
-  currentPoint: {x: 2.8366919, y: -6.43447}
+  currentPoint: {x: 5.267725, y: 1.2417324}
   circleSize: 10
-  sqrMinDistance: 0.5
-  agentSmoothTime: 0.05
+  sqrMinDistance: 1
+  agentSmoothTime: 0.1

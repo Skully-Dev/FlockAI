@@ -16,7 +16,10 @@ public class SameFlockFilter : ContextFilter //Derived from ContextFilter, there
             {
                 if (itemAgent.AgentFlock == agent.AgentFlock) //if part of the same flock
                 {
-                    filtered.Add(item); //add it to filtered list
+                    if (itemAgent.state != Life.State.Hidden && itemAgent.state != Life.State.Attacked)
+                    {
+                        filtered.Add(item); //add it to filtered list
+                    }
                 }
             }
         }

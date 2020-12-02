@@ -6,12 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behavior/Evade")] //now rmb project folder will allow creation of a scriptable object in Flock > Behavior
 public class EvadeBehavior : FilteredFlockBehavior //Get the methods and vars from FilteredFlockBehaviour, which is derived from FlockBehavior so it has to implement that FlockBehaviour CalculateMove and had FilteredFlockBehavior ContextFilter reference slot.
 {
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock) //agent is its own agent, context is other agents
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock) //agent is its own agent, context is other agents
     {
         //if no neighbors, return no adjustment.
         if (context.Count == 0)
         {
-            agent.isEvade = false; //if not evading, set agents isEvade to false
+            //agent.isEvade = false; //if not evading, set agents isEvade to false
             return Vector2.zero;
         }
 
@@ -22,7 +22,7 @@ public class EvadeBehavior : FilteredFlockBehavior //Get the methods and vars fr
         List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context); //Ternary operators, if no ContextFilter reference was provided will use unfiltered context.
         foreach (Transform item in filteredContext)
         {
-            if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareEvadeRadius) //if the item within the evade radius (if square distance between item and agent IS LESS THAN SquareEvadeRadius)
+            if (Vector2.SqrMagnitude(item.position - agent.transform.position) < flock.SquareSmallRadius) //if the item within the evade radius (if square distance between item and agent IS LESS THAN SquareEvadeRadius)
             {
                 //then
                 numEvade++; //add 1 to the number of items to evade
@@ -31,12 +31,12 @@ public class EvadeBehavior : FilteredFlockBehavior //Get the methods and vars fr
         }
         if (numEvade > 0) //if any dangerous agents are within evade radius
         {
-            agent.isEvade = true; //if evading, set agents isEvade to true
+            //agent.isEvade = true; //if evading, set agents isEvade to true
             evadeMove /= numEvade; //get the average magnitude of the sum of the evade directions
         }
         else
         {
-            agent.isEvade = false; //if not evading, set agents isEvade to false 
+            //agent.isEvade = false; //if not evading, set agents isEvade to false 
         }
 
         return evadeMove;

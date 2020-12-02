@@ -13,7 +13,7 @@ public class StayInRadiusBehavior : FlockBehavior
     [Tooltip("How large the circle to stay within is")]
     private float radius = 15;
 
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock)
     {
         Vector2 centerOffset = center - (Vector2)agent.transform.position; //the direction to center, mag would be the distance to center.
         float t = centerOffset.magnitude / radius; //if t=0, at center. if t=1, at circumference. if t>1, outside circle

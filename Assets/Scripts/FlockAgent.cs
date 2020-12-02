@@ -5,18 +5,28 @@ using UnityEngine;
 //script requires the GameObject it is attached to, to have a Collider2D component, if one doesn't exist, it will create one for it.
 //HOWEVER, since collider2D isn't specific, it'll require us to add the required component before script can be attached.
 [RequireComponent(typeof(Collider2D))] //Needed for finding agent neighbors (using physics to see if anything in radius around Agent)
+[RequireComponent(typeof(Animator))]
 public class FlockAgent : MonoBehaviour
 {
+    public Life.State state;
+
+    //REDUNDANT
+    //[Tooltip("For optional hide behavior, while evade, move towards safety")]
+    //public bool isEvade;
+
+    public bool newWander = true;
+    public Vector2 wanderPoint;
+
     /// <summary>
     /// The flock the instance of the agent is a part of
     /// </summary>
-    Flock agentFlock;
+    Life agentFlock;
 
     /// <summary>
     /// The flock this agent instance is a part of.
     /// Get but not Set as the flock only needs to initally set this value.
     /// </summary>
-    public Flock AgentFlock { get { return agentFlock; } }
+    public Life AgentFlock { get { return agentFlock; } }
 
     /// <summary>
     /// Reference/Cashe collider on this instance of agent.
@@ -28,20 +38,20 @@ public class FlockAgent : MonoBehaviour
     /// as agentCollider only needs to be assigned to at start.
     /// </summary>
     public Collider2D AgentCollider { get { return agentCollider; } }
-    // Start is called before the first frame update
-    [Tooltip("For optional hide behavior, while evade, move towards safety")]
-    public bool isEvade;
+
+    public Animator AgentAnimator;
 
     void Start()
     {
         agentCollider = GetComponent<Collider2D>();
+        AgentAnimator = GetComponent<Animator>();
     }
 
     /// <summary>
     /// Allows flock when it creates the agent to initialize/set Agents flock reference to itself.
     /// </summary>
     /// <param name="flock">The Flock that called the method when instancing THIS agent. I.E. Passes itself in.</param>
-    public void Initialize(Flock flock)
+    public void Initialize(Life flock)
     {
         agentFlock = flock;
     }
@@ -56,6 +66,11 @@ public class FlockAgent : MonoBehaviour
     {
         transform.up = velocity; //up is the front of the agent, this will make its direction face the velocity position. //In 3D use forward, not up
         transform.position += (Vector3)velocity * Time.deltaTime; //Cast as Vector3 as position is a Vector3 struct. deltaTime for consistant movement, regardless of framerate.
+    }
 
+    public void ResetPosition()
+    {
+        transform.position = Vector2.zero;
+        state = Life.State.Wander;
     }
 }

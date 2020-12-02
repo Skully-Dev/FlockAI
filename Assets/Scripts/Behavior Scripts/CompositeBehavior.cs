@@ -25,7 +25,7 @@ public class CompositeBehavior : FlockBehavior //Get the methods and vars from F
     public BehaviorGroup[] behaviors;
 
 
-    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock) //agent is its own agent, context is other agents
+    public override Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock) //agent is its own agent, context is other agents
     {
         Vector2 move = Vector2.zero; //starting value of zero to be added upon. Never assume a default value.
 

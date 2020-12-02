@@ -37,5 +37,5 @@ public abstract class FlockBehavior : ScriptableObject //inheriting from somethi
     /// <param name="context">What neighbours are around me(Agent), i.e. Other agents, obstacles or boundries etc.</param>
     /// <param name="flock">For situations we need information about the flock itself.</param>
     /// <returns></returns>
-    public abstract Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock); //Incomplete classabstract as derived behaviours will eventually implement it.
+    public abstract Vector2 CalculateMove(FlockAgent agent, List<Transform> context, Life flock); //Incomplete classabstract as derived behaviours will eventually implement it.
 }
